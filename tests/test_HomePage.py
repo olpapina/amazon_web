@@ -14,11 +14,15 @@ class Test_HomePage(BaseTest):
         self.homePage = HomePage(self.driver)
         self.homePage.is_sign_in_visible()
 
-    # def test_click_menu(self):
-    #     self.homePage = HomePage(self.driver)
-    #     self.homePage.click_menu()
-
-    def test_search(self):
+    def test_delivery_location(self):
         self.homePage = HomePage(self.driver)
-        self.homePage.do_search_type()
+        text = self.homePage.get_delivery_location_text()
+        assert TestData.ACTUAL_DELIVERY_LOCATION in text
 
+    def test_change_delivery_location(self):
+        self.homePage = HomePage(self.driver)
+        self.changeLocationPage = self.homePage.click_change_location()
+        self.changeLocationPage.select_location()
+        self.homePage = HomePage(self.driver)
+        text = self.homePage.get_delivery_location_text()
+        assert TestData.CHANGED_LOCATION in text

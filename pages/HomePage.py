@@ -1,23 +1,20 @@
 from selenium.webdriver.common.by import By
+
+from components.PopUpPage import PopUpPage
+from components.SearchBlockPage import SearchBlockPage
+from components.SignInPopUpPage import SignInPopUpPage
 from config.config import TestData
-from pages.AppstorePage import AppstorePage
 from pages.BasePage import BasePage
-from pages.LoginPage import LoginPage
-from pages.MenuPage import MenuPage
+from components.MenuPage import MenuPage
+from pages.ChangeLocationPage import ChangeLocationPage
+
 
 class HomePage(BasePage):
-    SIGN_IN_BUTTON = (By.XPATH, "//*[@id='nav-signin-tooltip']//*[contains(text(),'Sign in')]")
+    MENU = (By.ID, "nav-hamburger-menu")
     SIGN_IN_POP_UP = (By.ID, "nav-signin-tooltip")
     POP_UP = (By.ID, "glow-toaster-body")
-    BUTTON_CHANGE_ADDRESS = (By.CLASS_NAME, "glow-toaster-button-submit")
-    BUTTON_DONT_CHANGE = (By.CLASS_NAME, "glow-toaster-button-dismiss")
-    MENU = (By.ID, "nav-hamburger-menu")
-    AMAZON_APPSTORE = (By.XPATH, "//*[@id='hmenu-content']//*[contains(text(),'Amazon Appstore')]")
-    SEARCH = (By.ID, "twotabsearchtextbox")
-    SEARCH_BUTTON = (By.ID, "nav-search-submit-button")
-    DOWNLOAD_A_APPSTORE = (By.XPATH, "//*[@id='hmenu-content']//*[contains(text(),'Download Amazon Appstore')]")
-
-
+    DELIVERY_LOCATION_BLOCK = (By.ID, "glow-ingress-block")
+    DELIVERY_LOCATION_ICON = (By.ID, "nav-packard-glow-loc-icon")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -30,23 +27,22 @@ class HomePage(BasePage):
     def get_home_page_title(self, title):
         return self.get_title(title)
 
-    def do_search_type(self):
-        self.do_send_keys(self.SEARCH, "iPhone")
-
     def is_sign_in_visible(self):
         flag = self.is_visible(self.SIGN_IN_POP_UP)
         assert flag
 
-    def click_appstore(self):
-        self.do_click(self.AMAZON_APPSTORE)
+    def get_pop_up(self):
+        return PopUpPage(self.driver)
 
-    def click_download_appstore(self):
-        self.do_click(self.DOWNLOAD_A_APPSTORE)
-        return AppstorePage(self.driver)
+    def get_search_block(self):
+        return SearchBlockPage(self.driver)
 
-    def click_sign_in(self):
-        self.do_click(self.SIGN_IN_BUTTON)
-        return LoginPage(self.driver)
+    def get_sign_in(self):
+        return SignInPopUpPage(self.driver)
 
-    def click_dont_change(self):
-        self.do_click(self.BUTTON_DONT_CHANGE)
+    def get_delivery_location_text(self):
+        return self.get_element_text(self.DELIVERY_LOCATION_BLOCK)
+
+    def click_change_location(self):
+        self.do_click(self.DELIVERY_LOCATION_ICON)
+        return ChangeLocationPage(self.driver)

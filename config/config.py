@@ -4,8 +4,14 @@ class TestData:
 
     BASE_URL = "https://www.amazon.com/"
     USER_NAME = "opapinatest@yopmail.com"
-    LOGIN_PAGE_URL = "https://www.amazon.com/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fref%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&7"
+    PROBLEM_MESSAGE_TITLE = "There was a problem"
+    PROBLEM_MESSAGE_REASON = "We cannot find an account with that email address"
 
     HOME_PAGE_TITLE = "Amazon.com. Spend less. Smile more."
     LOGIN_PAGE_TITLE = "Amazon Sign-In"
     APPSTORE_TITLE = "The Amazon App"
+
+    SEARCH_TEXT = "Apple"
+    FILTER_TEXT = "iPad"
+    ACTUAL_DELIVERY_LOCATION = "Belarus"
+    CHANGED_LOCATION = "Poland"

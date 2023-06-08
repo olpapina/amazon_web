@@ -14,6 +14,3 @@ class AppstorePage(BasePage):
 
     def get_appstore_page_title(self, title):
         return self.get_title(title)
-
-    def do_search_type(self):
-        self.do_send_keys(self.SEARCH, "iPhone")

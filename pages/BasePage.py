@@ -24,3 +24,11 @@ class BasePage:
     def get_title(self, title):
         WebDriverWait(self.driver, 10).until(EC.title_is(title))
         return self.driver.title
+
+    def get_elements(self, by_locator):
+        elements = WebDriverWait(self.driver, 30).until(EC.presence_of_all_elements_located(by_locator))
+        return elements
+
+    def get_element(self, by_locator):
+        element = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(by_locator))
+        return element

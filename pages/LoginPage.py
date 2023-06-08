@@ -9,10 +9,10 @@ class LoginPage(BasePage):
     CONTINUE_BUTTON = (By.ID, "continue")
     CREATE_ACCOUNT_LINK = (By.LINK_TEXT, "Create your Amazon account")
     PROBLEM_MESSAGE = (By.CLASS_NAME, "a-alert-heading")
+    REASON_OF_PROBLEM = (By.CLASS_NAME, "a-list-item")
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver.get(TestData.LOGIN_PAGE_URL)
 
     def get_login_page_title(self, title):
         return self.get_title(title)
@@ -26,3 +26,9 @@ class LoginPage(BasePage):
 
     def is_problem_message(self):
         return self.is_visible(self.PROBLEM_MESSAGE)
+
+    def get_problem_message_text(self):
+        return self.get_element_text(self.PROBLEM_MESSAGE)
+
+    def get_problem_message_reason(self):
+        return self.get_element_text(self.REASON_OF_PROBLEM)
