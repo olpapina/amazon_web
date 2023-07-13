@@ -3,7 +3,7 @@ from pages.HomePage import HomePage
 from tests.test_base import BaseTest
 
 
-class Test_AppStore_Redirect(BaseTest):
+class TestAppStoreRedirect(BaseTest):
 
     def test_e2e_appstore_page(self):
         self.homePage = HomePage(self.driver)

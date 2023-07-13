@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-from config.config import TestData
 from pages.BasePage import BasePage
 
 

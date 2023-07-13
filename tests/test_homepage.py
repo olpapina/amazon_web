@@ -3,7 +3,7 @@ from pages.HomePage import HomePage
 from tests.test_base import BaseTest
 
 
-class Test_HomePage(BaseTest):
+class TestHomePage(BaseTest):
 
     def test_home_page_title(self):
         self.homePage = HomePage(self.driver)
