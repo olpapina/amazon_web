@@ -3,7 +3,7 @@ from pages.HomePage import HomePage
 from tests.test_base import BaseTest
 
 
-class Test_Search_Filter(BaseTest):
+class TestSearchFilter(BaseTest):
 
     def test_search_result(self):
         self.homePage = HomePage(self.driver)

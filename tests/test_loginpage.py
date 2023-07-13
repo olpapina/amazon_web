@@ -4,7 +4,7 @@ from pages.LoginPage import LoginPage
 from tests.test_base import BaseTest
 
 
-class Test_LoginPage(BaseTest):
+class TestLoginPage(BaseTest):
 
     def test_login_page_title(self):
         self.homePage = HomePage(self.driver)
